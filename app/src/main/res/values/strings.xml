@@ -17,5 +17,6 @@
     <string name="information_about_count_right_answers">Необходимое количество правильных ответов: %s</string>
     <string name="information_about_percent_right_answers">Необходимый процент правильных ответов: %s</string>
     <string name="play_again">Играть ещё раз</string>
+    <string name="symbolQuestion">"?"</string>
 
 </resources>

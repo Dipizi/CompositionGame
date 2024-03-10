@@ -57,7 +57,6 @@ class ChooseLevelFragment : Fragment() {
     }
 
     companion object {
-
         fun newInstance() = ChooseLevelFragment()
     }
 }

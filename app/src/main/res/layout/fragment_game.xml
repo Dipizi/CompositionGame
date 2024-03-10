@@ -33,8 +33,8 @@
         tools:text="1" />
 
     <TextView
-        style="@style/QuestionTextStyle"
         android:id="@+id/textViewVisibleNumber"
+        style="@style/QuestionTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintDimensionRatio="1:1"
@@ -45,16 +45,16 @@
         tools:text="7" />
 
     <TextView
-        style="@style/QuestionTextStyle"
         android:id="@+id/textViewUnknownNumber"
+        style="@style/QuestionTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/symbolQuestion"
         app:layout_constraintBottom_toBottomOf="@+id/textViewVisibleNumber"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewVisibleNumber"
-        app:layout_constraintTop_toTopOf="@+id/textViewVisibleNumber"
-        tools:text="7" />
+        app:layout_constraintTop_toTopOf="@+id/textViewVisibleNumber" />
 
     <TextView
         android:id="@+id/textViewInfoAboutAnswers"
