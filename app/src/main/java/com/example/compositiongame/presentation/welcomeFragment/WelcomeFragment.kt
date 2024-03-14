@@ -1,13 +1,13 @@
-package com.example.compositiongame.presentation.WelcomeFragment
+package com.example.compositiongame.presentation.welcomeFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.compositiongame.R
 import com.example.compositiongame.databinding.FragmentWelcomeBinding
-import com.example.compositiongame.presentation.ChooseLevelFragment.ChooseLevelFragment
 
 class WelcomeFragment : Fragment() {
 
@@ -36,13 +36,6 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun launchChooseLevelFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .addToBackStack(null)
-            .replace(R.id.fragment_container_view, ChooseLevelFragment.newInstance())
-            .commit()
-    }
-    companion object {
-
-        fun newInstance() = WelcomeFragment()
+        findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment)
     }
 }
