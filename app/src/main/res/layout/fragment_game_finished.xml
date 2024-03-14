@@ -1,79 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.GameFinishedFragment.GameFinishedFragment">
+<layout>
 
-    <ImageView
-        android:id="@+id/imageViewResult"
-        android:layout_margin="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/smile_win"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="TODO" />
+    <data>
+        <variable
+            name="gameResult"
+            type="com.example.compositiongame.domain.entities.GameResult" />
+    </data>
 
-    <TextView
-        android:id="@+id/textViewInfoAboutCountRightAnswers"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imageViewResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="16dp"
-        android:text="@string/information_about_count_right_answers"
-        android:textSize="18sp"
-        />
+        android:layout_height="match_parent"
+        tools:context=".presentation.gameFinishedFragment.GameFinishedFragment">
 
-    <TextView
-        android:id="@+id/textViewScore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewInfoAboutCountRightAnswers"
-        app:layout_constraintEnd_toEndOf="@id/textViewInfoAboutCountRightAnswers"
-        app:layout_constraintStart_toStartOf="@id/textViewInfoAboutCountRightAnswers"
-        android:layout_margin="16dp"
-        android:text="@string/your_score"
-        android:textSize="18sp"
-        />
+        <ImageView
+            android:id="@+id/imageViewResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:contentDescription="TODO"
+            app:setupImageResult="@{gameResult.win}"
+            tools:src="@drawable/smile_win"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewInfoAboutPercentRightAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewScore"
-        app:layout_constraintEnd_toEndOf="@id/textViewScore"
-        app:layout_constraintStart_toStartOf="@id/textViewScore"
-        android:layout_margin="16dp"
-        android:text="@string/information_about_percent_right_answers"
-        android:textSize="18sp"
-        />
+        <TextView
+            android:id="@+id/textViewInfoAboutCountRightAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="18sp"
+            app:InfoAboutCountRightAnswers="@{gameResult.gameSettings.minCountRightAnswers}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewResult"
+            tools:text="@string/information_about_count_right_answers" />
 
-    <TextView
-        android:id="@+id/textViewYourPercent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textViewInfoAboutPercentRightAnswers"
-        app:layout_constraintEnd_toEndOf="@id/textViewInfoAboutPercentRightAnswers"
-        app:layout_constraintStart_toStartOf="@id/textViewInfoAboutPercentRightAnswers"
-        android:layout_margin="16dp"
-        android:text="@string/your_score_percent"
-        android:textSize="18sp"
-        />
+        <TextView
+            android:id="@+id/textViewScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="18sp"
+            app:YourScore="@{gameResult.countRightAnswers}"
+            app:layout_constraintEnd_toEndOf="@id/textViewInfoAboutCountRightAnswers"
+            app:layout_constraintStart_toStartOf="@id/textViewInfoAboutCountRightAnswers"
+            app:layout_constraintTop_toBottomOf="@id/textViewInfoAboutCountRightAnswers"
+            tools:text="@string/your_score" />
 
-    <Button
-        android:id="@+id/buttonTryAgain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/play_again"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="8dp"
-        />
+        <TextView
+            android:id="@+id/textViewInfoAboutPercentRightAnswers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:InfoAboutPercentRightAnswers="@{gameResult.gameSettings.minPercentRightAnswers}"
+            tools:text="@string/information_about_percent_right_answers"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewScore"
+            app:layout_constraintStart_toStartOf="@id/textViewScore"
+            app:layout_constraintTop_toBottomOf="@id/textViewScore" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewYourPercent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:YourPercent="@{gameResult}"
+            tools:text="@string/your_score_percent"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/textViewInfoAboutPercentRightAnswers"
+            app:layout_constraintStart_toStartOf="@id/textViewInfoAboutPercentRightAnswers"
+            app:layout_constraintTop_toBottomOf="@id/textViewInfoAboutPercentRightAnswers" />
+
+        <Button
+            android:id="@+id/buttonTryAgain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/play_again"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

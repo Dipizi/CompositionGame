@@ -1,14 +1,13 @@
-package com.example.compositiongame.presentation.ChooseLevelFragment
+package com.example.compositiongame.presentation.chooseLevelFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.compositiongame.R
+import androidx.navigation.fragment.findNavController
 import com.example.compositiongame.databinding.FragmentChooseLevelBinding
 import com.example.compositiongame.domain.entities.Level
-import com.example.compositiongame.presentation.GameFragment.GameFragment
 
 
 class ChooseLevelFragment : Fragment() {
@@ -50,13 +49,8 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .addToBackStack(GameFragment.NAME_FRAGMENT)
-            .replace(R.id.fragment_container_view,GameFragment.newInstance(level))
-            .commit()
-    }
-
-    companion object {
-        fun newInstance() = ChooseLevelFragment()
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(level)
+        )
     }
 }
